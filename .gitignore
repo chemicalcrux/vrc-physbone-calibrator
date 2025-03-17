@@ -77,3 +77,7 @@ crashlytics-build.properties
 Assets/PackageMakerWindowData.asset*
 .idea
 .vscode
+
+.DS_Store
+
+*.blend1

@@ -1,0 +1,20 @@
+{
+    "name": "PhysboneCalibratorEditor",
+    "rootNamespace": "ChemicalCrux.PhysboneCalibrator.Editor",
+    "references": [
+        "GUID:5718fb738711cd34ea54e9553040911d",
+        "GUID:c894b35efadad4cbd916a6ffb64ac4ca",
+        "GUID:cd59bf9231294ffab8427690942c6a35"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

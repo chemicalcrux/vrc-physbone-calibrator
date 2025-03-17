@@ -1,0 +1,16 @@
+{
+  "name": "com.chemicalcrux.physbone-calibrator",
+  "displayName": "Physbone Calibrator",
+  "version": "0.1.0",
+  "unity": "2022.3",
+  "description": "Creates a menu to tweak physbone settings",
+  "vrchatVersion": "2025.1.2",
+  "author": {
+    "name": "chemicalcrux",
+    "email": "chemicalcrux@gmail.com",
+    "url": "https://github.com/chemicalcrux/"
+  },
+  "vpmDependencies" : {
+    "com.vrchat.avatars" : "3.7.6"
+  }
+}
