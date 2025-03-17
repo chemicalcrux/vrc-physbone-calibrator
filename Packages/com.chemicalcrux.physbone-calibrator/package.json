@@ -11,6 +11,7 @@
     "url": "https://github.com/chemicalcrux/"
   },
   "vpmDependencies" : {
-    "com.vrchat.avatars" : "3.7.6"
+    "com.vrchat.avatars" : ">=3.7.6 < 3.8.X",
+    "com.vrcfury.vrcfury" : ">=1.1206.0"
   }
 }
