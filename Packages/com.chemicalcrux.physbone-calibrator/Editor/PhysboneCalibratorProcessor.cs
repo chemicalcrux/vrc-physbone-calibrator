@@ -200,72 +200,12 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
                 }
             }
 
-            root.AddChild(AnimateFloatProperty(context, "Forces/Spring or Momentum", "spring", new Vector2(0, 1)));
-            
-            if (declaration.integrationTypeToggle ||
-                mainBone.integrationType == VRCPhysBoneBase.IntegrationType.Advanced)
-            {
-                root.AddChild(AnimateFloatProperty(context, "Forces/Stiffness", "stiffness", new Vector2(0, 1)));
-            }
-
-            root.AddChild(AnimateFloatProperty(context, "Forces/Gravity", "gravity", new Vector2(-1, 1)));
-            root.AddChild(AnimateFloatProperty(context, "Forces/Gravity Falloff", "gravityFalloff", new Vector2(0, 1)));
-
-            root.AddChild(AnimateIntToggleProperty(context, "Forces/Immobile Type", "immobileType",
-                new List<(string label, int value)>()
-                {
-                    ("All Motion", 0),
-                    ("World", 1)
-                }));
-
-            root.AddChild(AnimateFloatProperty(context, "Forces/Immobile", "immobile", new Vector2(0, 1)));
-
-            root.AddChild(AnimateIntToggleProperty(context, "Limits/Limit Type", "limitType",
-                new List<(string label, int value)>()
-                {
-                    ("None", 0),
-                    ("Angle", 1),
-                    ("Hinge", 2),
-                    ("Polar", 3)
-                }));
-
-            string angleString = $"{declaration.angleRange.x:N0} .. {declaration.angleRange.y:N0}";
-            
-            root.AddChild(AnimateFloatProperty(context, "Limits/Max Angle (Pitch)\n" + angleString, "maxAngleX", declaration.angleRange));
-            root.AddChild(AnimateFloatProperty(context, "Limits/Max Angle (Yaw)\n" + angleString, "maxAngleZ", declaration.angleRange));
-
-            angleString = "-180 .. 180";
-            root.AddChild(AnimateFloatProperty(context, "Limits/Rotation/X\n" + angleString, "limitRotation.x",
-                new Vector2(-180, 180)));
-            root.AddChild(AnimateFloatProperty(context, "Limits/Rotation/Y\n" + angleString, "limitRotation.y",
-                new Vector2(-180, 180)));
-            root.AddChild(AnimateFloatProperty(context, "Limits/Rotation/Z\n" + angleString, "limitRotation.z",
-                new Vector2(-180, 180)));
-
-            root.AddChild(AnimateFloatProperty(context, "Collision/Radius", "radius", new Vector2(0, 1)));
-
-            root.AddChild(AnimateIntToggleProperty(context, "Collision/Mode", "allowCollision",
-                new List<(string label, int value)>()
-                {
-                    ("False", 0),
-                    ("True", 1),
-                    ("Other", 2),
-                }));
-
-            root.AddChild(AnimateBoolProperty(context, "Collision/Allow Self", "collisionFilter.allowSelf"));
-            root.AddChild(AnimateBoolProperty(context, "Collision/Allow Others", "collisionFilter.allowOthers"));
-
-            root.AddChild(AnimateFloatProperty(context, "Stretch + Squish/Stretch Motion", "stretchMotion",
-                new Vector2(0, 1)));
-            root.AddChild(
-                AnimateFloatProperty(context, "Stretch + Squish/Max Stretch", "maxStretch", new Vector2(0, 1)));
-            root.AddChild(AnimateFloatProperty(context, "Stretch + Squish/Max Squish", "maxSquish", new Vector2(0, 1)));
-
-            root.AddChild(AnimateFloatProperty(context, "Grab + Pose/Grab Movement", "grabMovement",
-                new Vector2(0, 1)));
-            root.AddChild(AnimateBoolProperty(context, "Grab + Pose/Snap to Hand", "snapToHand"));
-
-            root.AddChild(AnimateBoolProperty(context, "Options/Is Animated", "isAnimated"));
+            AddForceCalibrations(declaration, context, root);
+            AddLimitCalibrations(declaration, context, root);
+            AddCollisionCalibrations(declaration, context, root);
+            AddStretchAndSquishCalibrations(declaration, context, root);
+            AddGrabAndPoseCalibrations(declaration, context, root);
+            AddOptionsCalibrations(declaration, context, root);
 
             var rootChildren = root.children;
 
@@ -355,6 +295,138 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             context.AddChangeDetector(parameterName);
 
             return root;
+        }
+
+        private static void AddForceCalibrations(PhysboneCalibratorDeclaration declaration, GeneratorContext context, BlendTree root)
+        {
+            if (!declaration.calibrateForces)
+                return;
+
+            var mainBone = declaration.targets[0];
+            
+            root.AddChild(AnimateFloatProperty(context, "Forces/Spring or Momentum", "spring", new Vector2(0, 1)));
+            
+            if (declaration.integrationTypeToggle ||
+                mainBone.integrationType == VRCPhysBoneBase.IntegrationType.Advanced)
+            {
+                root.AddChild(AnimateFloatProperty(context, "Forces/Stiffness", "stiffness", new Vector2(0, 1)));
+            }
+
+            root.AddChild(AnimateFloatProperty(context, "Forces/Gravity", "gravity", new Vector2(-1, 1)));
+            root.AddChild(AnimateFloatProperty(context, "Forces/Gravity Falloff", "gravityFalloff", new Vector2(0, 1)));
+
+            root.AddChild(AnimateIntToggleProperty(context, "Forces/Immobile Type", "immobileType",
+                new List<(string label, int value)>()
+                {
+                    ("All Motion", 0),
+                    ("World", 1)
+                }));
+
+            root.AddChild(AnimateFloatProperty(context, "Forces/Immobile", "immobile", new Vector2(0, 1)));
+        }
+
+        private static void AddLimitCalibrations(PhysboneCalibratorDeclaration declaration, GeneratorContext context,
+            BlendTree root)
+        {
+            if (!declaration.calibrateLimits)
+                return;
+            
+            root.AddChild(AnimateIntToggleProperty(context, "Limits/Limit Type", "limitType",
+                new List<(string label, int value)>()
+                {
+                    ("None", 0),
+                    ("Angle", 1),
+                    ("Hinge", 2),
+                    ("Polar", 3)
+                }));
+
+            string angleString = $"{declaration.angleRange.x:N0} .. {declaration.angleRange.y:N0}";
+            
+            root.AddChild(AnimateFloatProperty(context, "Limits/Max Angle (Pitch)\n" + angleString, "maxAngleX", declaration.angleRange));
+            root.AddChild(AnimateFloatProperty(context, "Limits/Max Angle (Yaw)\n" + angleString, "maxAngleZ", declaration.angleRange));
+
+            angleString = "-180 .. 180";
+            root.AddChild(AnimateFloatProperty(context, "Limits/Rotation/X\n" + angleString, "limitRotation.x",
+                new Vector2(-180, 180)));
+            root.AddChild(AnimateFloatProperty(context, "Limits/Rotation/Y\n" + angleString, "limitRotation.y",
+                new Vector2(-180, 180)));
+            root.AddChild(AnimateFloatProperty(context, "Limits/Rotation/Z\n" + angleString, "limitRotation.z",
+                new Vector2(-180, 180)));
+        }
+
+        private static void AddCollisionCalibrations(PhysboneCalibratorDeclaration declaration,
+            GeneratorContext context, BlendTree root)
+        {
+            if (!declaration.calibrateCollision)
+                return;
+            
+            root.AddChild(AnimateFloatProperty(context, "Collision/Radius", "radius", new Vector2(0, 1)));
+
+            root.AddChild(AnimateIntToggleProperty(context, "Collision/Mode", "allowCollision",
+                new List<(string label, int value)>()
+                {
+                    ("False\n(Nobody)", 0),
+                    ("True\n(Everybody)", 1),
+                    ("Other\n(Mixed)", 2),
+                }));
+
+            root.AddChild(AnimateBoolProperty(context, "Collision/Allow Self", "collisionFilter.allowSelf"));
+            root.AddChild(AnimateBoolProperty(context, "Collision/Allow Others", "collisionFilter.allowOthers"));
+        }
+
+        private static void AddStretchAndSquishCalibrations(PhysboneCalibratorDeclaration declaration,
+            GeneratorContext context, BlendTree root)
+        {
+            if (!declaration.calibrateStretchAndSquish)
+                return;
+            
+            root.AddChild(AnimateFloatProperty(context, "Stretch + Squish/Stretch Motion", "stretchMotion",
+                new Vector2(0, 1)));
+            root.AddChild(
+                AnimateFloatProperty(context, "Stretch + Squish/Max Stretch", "maxStretch", new Vector2(0, 1)));
+            root.AddChild(AnimateFloatProperty(context, "Stretch + Squish/Max Squish", "maxSquish", new Vector2(0, 1)));
+        }
+
+        private static void AddGrabAndPoseCalibrations(PhysboneCalibratorDeclaration declaration,
+            GeneratorContext context, BlendTree root)
+        {
+            if (!declaration.calibrateGrabAndPose)
+                return;
+            
+            root.AddChild(AnimateFloatProperty(context, "Grab + Pose/Grab Movement", "grabMovement",
+                new Vector2(0, 1)));
+            root.AddChild(AnimateBoolProperty(context, "Grab + Pose/Snap to Hand", "snapToHand"));
+
+            root.AddChild(AnimateIntToggleProperty(context, "Grab + Pose/Grabbing/Mode", "allowGrabbing",
+                new List<(string label, int value)>()
+                {
+                    ("False\n(Nobody)", 0),
+                    ("True\n(Everybody)", 1),
+                    ("Other\n(Mixed)", 2),
+                }));
+
+            root.AddChild(AnimateBoolProperty(context, "Grab + Pose/Grabbing/Allow Self", "grabFilter.allowSelf"));
+            root.AddChild(AnimateBoolProperty(context, "Grab + Pose/Grabbing/Allow Others", "grabFilter.allowOthers"));
+
+            root.AddChild(AnimateIntToggleProperty(context, "Grab + Pose/Posing/Mode", "allowPosing",
+                new List<(string label, int value)>()
+                {
+                    ("False\n(Nobody)", 0),
+                    ("True\n(Everybody)", 1),
+                    ("Other\n(Mixed)", 2),
+                }));
+
+            root.AddChild(AnimateBoolProperty(context, "Grab + Pose/Posing/Allow Self", "poseFilter.allowSelf"));
+            root.AddChild(AnimateBoolProperty(context, "Grab + Pose/Posing/Allow Others", "poseFilter.allowOthers"));
+        }
+
+        private static void AddOptionsCalibrations(PhysboneCalibratorDeclaration declaration, GeneratorContext context,
+            BlendTree root)
+        {
+            if (!declaration.calibrateOptions)
+                return;
+            
+            root.AddChild(AnimateBoolProperty(context, "Options/Is Animated", "isAnimated"));
         }
 
         // a convenient way to reinterpret an integer as a float!

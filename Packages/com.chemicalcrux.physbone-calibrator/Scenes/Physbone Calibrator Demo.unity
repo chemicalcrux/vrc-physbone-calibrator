@@ -213,7 +213,7 @@ Transform:
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
@@ -1884,6 +1884,12 @@ MonoBehaviour:
   menuPath: Tail
   targets:
   - {fileID: 1011331094}
+  calibrateForces: 1
+  calibrateLimits: 1
+  calibrateCollision: 1
+  calibrateStretchAndSquish: 1
+  calibrateGrabAndPose: 1
+  calibrateOptions: 1
   integrationTypeToggle: 1
   angleRange: {x: 0, y: 90}
   localOnly: 1
@@ -1909,6 +1915,12 @@ MonoBehaviour:
   - {fileID: 1768537775}
   - {fileID: 1711001666}
   - {fileID: 1369930286}
+  calibrateForces: 1
+  calibrateLimits: 1
+  calibrateCollision: 1
+  calibrateStretchAndSquish: 1
+  calibrateGrabAndPose: 1
+  calibrateOptions: 1
   integrationTypeToggle: 0
   angleRange: {x: 0, y: 90}
   localOnly: 1

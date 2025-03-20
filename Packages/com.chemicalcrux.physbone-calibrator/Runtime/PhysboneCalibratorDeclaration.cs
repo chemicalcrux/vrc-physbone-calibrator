@@ -11,7 +11,15 @@ namespace ChemicalCrux.PhysboneCalibrator.Runtime
         public string menuPath;
         public List<VRCPhysBone> targets;
 
+        [Header("Categories")] public bool calibrateForces = true;
+        public bool calibrateLimits = true;
+        public bool calibrateCollision = true;
+        public bool calibrateStretchAndSquish = true;
+        public bool calibrateGrabAndPose = true;
+        public bool calibrateOptions = true;
+
         [Header("Features")] 
+        
         [Tooltip("Add a submenu to switch between 'Simplified' and 'Advanced' modes")]
         public bool integrationTypeToggle;
         [Tooltip("The range of angles used for limits")]
