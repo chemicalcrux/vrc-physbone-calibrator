@@ -11,7 +11,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
 {
     public class GeneratorContext
     {
-        public PhysboneCalibratorDeclaration declaration;
+        public Runtime.PhysboneCalibrator declaration;
         public Transform avatarRoot;
         
         public AnimatorController generatedController;

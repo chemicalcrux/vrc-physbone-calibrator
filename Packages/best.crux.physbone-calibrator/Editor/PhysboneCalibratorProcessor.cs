@@ -22,7 +22,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
 
         public bool OnPreprocessAvatar(GameObject avatarGameObject)
         {
-            foreach (var declaration in avatarGameObject.GetComponentsInChildren<PhysboneCalibratorDeclaration>())
+            foreach (var declaration in avatarGameObject.GetComponentsInChildren<Runtime.PhysboneCalibrator>())
             {
                 Process(declaration, avatarGameObject);
             }
@@ -30,7 +30,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             return true;
         }
 
-        private static void Process(PhysboneCalibratorDeclaration declaration, GameObject avatarGameObject)
+        private static void Process(Runtime.PhysboneCalibrator declaration, GameObject avatarGameObject)
         {
             if (declaration.targets.Count == 0)
                 return;
@@ -297,7 +297,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             return root;
         }
 
-        private static void AddForceCalibrations(PhysboneCalibratorDeclaration declaration, GeneratorContext context, BlendTree root)
+        private static void AddForceCalibrations(Runtime.PhysboneCalibrator declaration, GeneratorContext context, BlendTree root)
         {
             if (!declaration.calibrateForces)
                 return;
@@ -325,7 +325,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             root.AddChild(AnimateFloatProperty(context, "Forces/Immobile", "immobile", new Vector2(0, 1)));
         }
 
-        private static void AddLimitCalibrations(PhysboneCalibratorDeclaration declaration, GeneratorContext context,
+        private static void AddLimitCalibrations(Runtime.PhysboneCalibrator declaration, GeneratorContext context,
             BlendTree root)
         {
             if (!declaration.calibrateLimits)
@@ -354,7 +354,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
                 new Vector2(-180, 180)));
         }
 
-        private static void AddCollisionCalibrations(PhysboneCalibratorDeclaration declaration,
+        private static void AddCollisionCalibrations(Runtime.PhysboneCalibrator declaration,
             GeneratorContext context, BlendTree root)
         {
             if (!declaration.calibrateCollision)
@@ -374,7 +374,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             root.AddChild(AnimateBoolProperty(context, "Collision/Allow Others", "collisionFilter.allowOthers"));
         }
 
-        private static void AddStretchAndSquishCalibrations(PhysboneCalibratorDeclaration declaration,
+        private static void AddStretchAndSquishCalibrations(Runtime.PhysboneCalibrator declaration,
             GeneratorContext context, BlendTree root)
         {
             if (!declaration.calibrateStretchAndSquish)
@@ -387,7 +387,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             root.AddChild(AnimateFloatProperty(context, "Stretch + Squish/Max Squish", "maxSquish", new Vector2(0, 1)));
         }
 
-        private static void AddGrabAndPoseCalibrations(PhysboneCalibratorDeclaration declaration,
+        private static void AddGrabAndPoseCalibrations(Runtime.PhysboneCalibrator declaration,
             GeneratorContext context, BlendTree root)
         {
             if (!declaration.calibrateGrabAndPose)
@@ -420,7 +420,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             root.AddChild(AnimateBoolProperty(context, "Grab + Pose/Posing/Allow Others", "poseFilter.allowOthers"));
         }
 
-        private static void AddOptionsCalibrations(PhysboneCalibratorDeclaration declaration, GeneratorContext context,
+        private static void AddOptionsCalibrations(Runtime.PhysboneCalibrator declaration, GeneratorContext context,
             BlendTree root)
         {
             if (!declaration.calibrateOptions)

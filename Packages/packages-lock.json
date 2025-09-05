@@ -1,7 +1,13 @@
 {
   "dependencies": {
-    "com.chemicalcrux.physbone-calibrator": {
-      "version": "file:com.chemicalcrux.physbone-calibrator",
+    "best.crux.core": {
+      "version": "file:best.crux.core",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "best.crux.physbone-calibrator": {
+      "version": "file:best.crux.physbone-calibrator",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

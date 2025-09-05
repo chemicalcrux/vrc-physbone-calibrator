@@ -6,7 +6,7 @@ using VRC.SDKBase;
 
 namespace ChemicalCrux.PhysboneCalibrator.Runtime
 {
-    public class PhysboneCalibratorDeclaration : MonoBehaviour, IEditorOnly
+    public class PhysboneCalibrator : MonoBehaviour, IEditorOnly
     {
         public string menuPath;
         public List<VRCPhysBone> targets;
