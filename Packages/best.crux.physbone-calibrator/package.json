@@ -1,7 +1,7 @@
 {
   "name": "best.crux.physbone-calibrator",
   "displayName": "Physbone Calibrator",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "unity": "2022.3",
   "description": "Creates a menu to tweak physbone settings",
   "vrchatVersion": "2025.1.2",
