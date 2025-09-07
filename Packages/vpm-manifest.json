@@ -8,6 +8,9 @@
     },
     "vrchat.blackstartx.gesture-manager": {
       "version": "3.9.3"
+    },
+    "best.crux.core": {
+      "version": "0.7.0"
     }
   },
   "locked": {
@@ -28,8 +31,12 @@
     "vrchat.blackstartx.gesture-manager": {
       "version": "3.9.3",
       "dependencies": {
-        "com.vrchat.avatars": ">=3.5.2 < 3.8.X"
+        "com.vrchat.avatars": ">=3.5.2 <3.8.X"
       }
+    },
+    "best.crux.core": {
+      "version": "0.7.0",
+      "dependencies": {}
     }
   }
 }

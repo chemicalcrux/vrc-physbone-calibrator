@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Label tabindex="-1" text="Features" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 20px; -unity-font-style: bold;" />
+    <ui:GroupBox>
+        <uie:PropertyField binding-path="calibrateForces" label="Forces" />
+        <Crux.Core.Editor.Controls.RevealArea binding="calibrateForces">
+            <uie:PropertyField binding-path="integrationTypeToggle" label="Integration Type" />
+        </Crux.Core.Editor.Controls.RevealArea>
+        <uie:PropertyField binding-path="calibrateLimits" label="Limits" />
+        <Crux.Core.Editor.Controls.RevealArea binding="calibrateLimits">
+            <uie:PropertyField binding-path="angleRange" label="Angle Range" />
+        </Crux.Core.Editor.Controls.RevealArea>
+        <uie:PropertyField binding-path="calibrateCollision" label="Collision" />
+        <uie:PropertyField binding-path="calibrateStretchAndSquish" label="Stretch and Squish" />
+        <uie:PropertyField binding-path="calibrateGrabAndPose" label="Grab and Pose" />
+        <uie:PropertyField binding-path="calibrateOptions" label="Options" />
+    </ui:GroupBox>
+    <ui:Label tabindex="-1" text="Extras" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 20px; -unity-font-style: bold;" />
+    <ui:GroupBox>
+        <uie:PropertyField binding-path="localOnly" label="Local Only" />
+    </ui:GroupBox>
+</ui:UXML>

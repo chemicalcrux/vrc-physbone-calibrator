@@ -1,8 +1,9 @@
 {
-    "name": "PhysboneCalibratorRuntime",
-    "rootNamespace": "ChemicalCrux.PhysboneCalibrator.Runtime",
+    "name": "Crux.PhysboneCalibrator.Runtime",
+    "rootNamespace": "Crux.PhysboneCalibrator.Runtime",
     "references": [
-        "GUID:5718fb738711cd34ea54e9553040911d"
+        "GUID:5718fb738711cd34ea54e9553040911d",
+        "GUID:1cdc6dedefbda46a6b25f4afc8d269f1"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

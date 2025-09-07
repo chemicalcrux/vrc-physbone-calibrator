@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using ChemicalCrux.PhysboneCalibrator.Runtime;
 using com.vrcfury.api;
 using com.vrcfury.api.Components;
+using Crux.PhysboneCalibrator.Runtime.Configuration;
 using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -14,7 +14,7 @@ using VRC.SDK3.Dynamics.PhysBone.Components;
 using VRC.SDKBase;
 using VRC.SDKBase.Editor.BuildPipeline;
 
-namespace ChemicalCrux.PhysboneCalibrator.Editor
+namespace Crux.PhysboneCalibrator.Editor
 {
     public class PhysboneCalibratorProcessor : MonoBehaviour, IVRCSDKPreprocessAvatarCallback
     {
@@ -24,16 +24,22 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
         {
             foreach (var declaration in avatarGameObject.GetComponentsInChildren<Runtime.PhysboneCalibrator>())
             {
-                Process(declaration, avatarGameObject);
+                if (!TryProcess(declaration, avatarGameObject))
+                    return false;
             }
 
             return true;
         }
 
-        private static void Process(Runtime.PhysboneCalibrator declaration, GameObject avatarGameObject)
+        private static bool TryProcess(Runtime.PhysboneCalibrator declaration, GameObject avatarGameObject)
         {
-            if (declaration.targets.Count == 0)
-                return;
+            if (!declaration.configuration.TryUpgradeTo(out PhysboneCalibratorConfigurationV1 configuration))
+            {
+                return false;
+            }
+
+            if (configuration.targets.Count == 0)
+                return true;
 
             FuryFullController fc = FuryComponents.CreateFullController(avatarGameObject);
 
@@ -138,7 +144,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
 
             GeneratorContext context = new()
             {
-                declaration = declaration,
+                configuration = configuration,
                 avatarRoot = avatarGameObject.transform,
                 generatedController = controller,
                 generatedParameters = parameters,
@@ -159,7 +165,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             {
                 name = "Control/Adjusting",
                 defaultValue = 0f,
-                networkSynced = !context.declaration.localOnly,
+                networkSynced = !context.configuration.localOnly,
                 valueType = VRCExpressionParameters.ValueType.Bool,
                 saved = false
             });
@@ -174,11 +180,11 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
 
             blendState.motion = root;
 
-            var mainBone = declaration.targets[0];
+            var mainBone = configuration.targets[0];
 
             root.AddChild(AnimateFloatProperty(context, "Forces/Pull", "pull", new Vector2(0, 1)));
 
-            if (declaration.integrationTypeToggle)
+            if (configuration.integrationTypeToggle)
             {
                 root.AddChild(AnimateIntToggleProperty(context, "Forces/Integration Type", "integrationType",
                     new List<(string label, int value)>()
@@ -191,7 +197,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             {
                 var expected = mainBone.integrationType;
 
-                foreach (var target in declaration.targets)
+                foreach (var target in configuration.targets)
                 {
                     if (target.integrationType != expected)
                     {
@@ -200,12 +206,12 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
                 }
             }
 
-            AddForceCalibrations(declaration, context, root);
-            AddLimitCalibrations(declaration, context, root);
-            AddCollisionCalibrations(declaration, context, root);
-            AddStretchAndSquishCalibrations(declaration, context, root);
-            AddGrabAndPoseCalibrations(declaration, context, root);
-            AddOptionsCalibrations(declaration, context, root);
+            AddForceCalibrations(configuration, context, root);
+            AddLimitCalibrations(configuration, context, root);
+            AddCollisionCalibrations(configuration, context, root);
+            AddStretchAndSquishCalibrations(configuration, context, root);
+            AddGrabAndPoseCalibrations(configuration, context, root);
+            AddOptionsCalibrations(configuration, context, root);
 
             var rootChildren = root.children;
 
@@ -227,13 +233,15 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
 
             fc.AddController(controller);
             fc.AddParams(parameters);
-            fc.AddMenu(context.ResolveHierarchy(8), declaration.menuPath);
+            fc.AddMenu(context.ResolveHierarchy(8), configuration.menuPath);
+
+            return true;
         }
 
         private static Motion AnimateBoolProperty(GeneratorContext context, string menuPath, string propertyName)
         {
             string parameterName = $"Control/{propertyName}";
-            VRCPhysBone mainBone = context.declaration.targets[0];
+            VRCPhysBone mainBone = context.configuration.targets[0];
 
             SerializedObject obj = new(mainBone);
             SerializedProperty prop = obj.FindProperty(propertyName);
@@ -244,7 +252,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
                 name = parameterName,
                 saved = true,
                 defaultValue = currentValue ? 1f : 0f,
-                networkSynced = !context.declaration.localOnly,
+                networkSynced = !context.configuration.localOnly,
                 valueType = VRCExpressionParameters.ValueType.Bool
             });
 
@@ -256,7 +264,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             minClip.name = propertyName + " - Minimum";
             maxClip.name = propertyName + " - Maximum";
 
-            foreach (var physbone in context.declaration.targets)
+            foreach (var physbone in context.configuration.targets)
             {
                 string path = GetPath(context.avatarRoot, physbone.gameObject.transform);
                 Type type = typeof(VRCPhysBone);
@@ -297,7 +305,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             return root;
         }
 
-        private static void AddForceCalibrations(Runtime.PhysboneCalibrator declaration, GeneratorContext context, BlendTree root)
+        private static void AddForceCalibrations(PhysboneCalibratorConfigurationV1 declaration, GeneratorContext context, BlendTree root)
         {
             if (!declaration.calibrateForces)
                 return;
@@ -325,7 +333,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             root.AddChild(AnimateFloatProperty(context, "Forces/Immobile", "immobile", new Vector2(0, 1)));
         }
 
-        private static void AddLimitCalibrations(Runtime.PhysboneCalibrator declaration, GeneratorContext context,
+        private static void AddLimitCalibrations(PhysboneCalibratorConfigurationV1 declaration, GeneratorContext context,
             BlendTree root)
         {
             if (!declaration.calibrateLimits)
@@ -354,7 +362,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
                 new Vector2(-180, 180)));
         }
 
-        private static void AddCollisionCalibrations(Runtime.PhysboneCalibrator declaration,
+        private static void AddCollisionCalibrations(PhysboneCalibratorConfigurationV1 declaration,
             GeneratorContext context, BlendTree root)
         {
             if (!declaration.calibrateCollision)
@@ -374,7 +382,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             root.AddChild(AnimateBoolProperty(context, "Collision/Allow Others", "collisionFilter.allowOthers"));
         }
 
-        private static void AddStretchAndSquishCalibrations(Runtime.PhysboneCalibrator declaration,
+        private static void AddStretchAndSquishCalibrations(PhysboneCalibratorConfigurationV1 declaration,
             GeneratorContext context, BlendTree root)
         {
             if (!declaration.calibrateStretchAndSquish)
@@ -387,7 +395,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             root.AddChild(AnimateFloatProperty(context, "Stretch + Squish/Max Squish", "maxSquish", new Vector2(0, 1)));
         }
 
-        private static void AddGrabAndPoseCalibrations(Runtime.PhysboneCalibrator declaration,
+        private static void AddGrabAndPoseCalibrations(PhysboneCalibratorConfigurationV1 declaration,
             GeneratorContext context, BlendTree root)
         {
             if (!declaration.calibrateGrabAndPose)
@@ -420,7 +428,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             root.AddChild(AnimateBoolProperty(context, "Grab + Pose/Posing/Allow Others", "poseFilter.allowOthers"));
         }
 
-        private static void AddOptionsCalibrations(Runtime.PhysboneCalibrator declaration, GeneratorContext context,
+        private static void AddOptionsCalibrations(PhysboneCalibratorConfigurationV1 declaration, GeneratorContext context,
             BlendTree root)
         {
             if (!declaration.calibrateOptions)
@@ -442,7 +450,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             List<(string label, int value)> choices)
         {
             string parameterName = $"Control/{propertyName}";
-            VRCPhysBone mainBone = context.declaration.targets[0];
+            VRCPhysBone mainBone = context.configuration.targets[0];
 
             SerializedObject obj = new(mainBone);
             SerializedProperty prop = obj.FindProperty(propertyName);
@@ -472,7 +480,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
                 name = parameterName,
                 saved = true,
                 defaultValue = defaultIndex,
-                networkSynced = !context.declaration.localOnly,
+                networkSynced = !context.configuration.localOnly,
                 valueType = VRCExpressionParameters.ValueType.Int
             });
 
@@ -500,7 +508,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
                     name = propertyName + " - " + choice.value
                 };
 
-                foreach (var physbone in context.declaration.targets)
+                foreach (var physbone in context.configuration.targets)
                 {
                     string path = GetPath(context.avatarRoot, physbone.gameObject.transform);
                     Type type = typeof(VRCPhysBone);
@@ -541,7 +549,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             string propertyName, Vector2 range)
         {
             string parameterName = $"Control/{propertyName}";
-            VRCPhysBone mainBone = context.declaration.targets[0];
+            VRCPhysBone mainBone = context.configuration.targets[0];
 
             SerializedObject obj = new(mainBone);
             SerializedProperty prop = obj.FindProperty(propertyName);
@@ -554,7 +562,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
                 name = parameterName,
                 saved = true,
                 defaultValue = currentTime,
-                networkSynced = !context.declaration.localOnly,
+                networkSynced = !context.configuration.localOnly,
                 valueType = VRCExpressionParameters.ValueType.Float
             });
 
@@ -566,7 +574,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             minClip.name = propertyName + " - Minimum";
             maxClip.name = propertyName + " - Maximum";
 
-            foreach (var physbone in context.declaration.targets)
+            foreach (var physbone in context.configuration.targets)
             {
                 string path = GetPath(context.avatarRoot, physbone.gameObject.transform);
                 Type type = typeof(VRCPhysBone);
@@ -637,7 +645,7 @@ namespace ChemicalCrux.PhysboneCalibrator.Editor
             toggleOnClip.name = "Enable Physbones";
             toggleOffClip.name = "Disable Physbones";
 
-            foreach (var physbone in context.declaration.targets)
+            foreach (var physbone in context.configuration.targets)
             {
                 var path = GetPath(context.avatarRoot, physbone.transform);
                 Type type = typeof(VRCPhysBone);

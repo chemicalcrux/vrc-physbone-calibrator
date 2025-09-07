@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using VRC.SDK3.Avatars.ScriptableObjects;
 
-namespace ChemicalCrux.PhysboneCalibrator.Editor
+namespace Crux.PhysboneCalibrator.Editor
 {
     public class MenuHierarchy
     {

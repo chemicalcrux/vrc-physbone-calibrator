@@ -1,17 +1,18 @@
 using System;
 using System.Collections.Generic;
-using ChemicalCrux.PhysboneCalibrator.Runtime;
+using Crux.PhysboneCalibrator.Runtime;
+using Crux.PhysboneCalibrator.Runtime.Configuration;
 using UnityEditor.Animations;
 using UnityEngine;
 using VRC.SDK3.Avatars.Components;
 using VRC.SDK3.Avatars.ScriptableObjects;
 using VRC.SDKBase;
 
-namespace ChemicalCrux.PhysboneCalibrator.Editor
+namespace Crux.PhysboneCalibrator.Editor
 {
     public class GeneratorContext
     {
-        public Runtime.PhysboneCalibrator declaration;
+        public PhysboneCalibratorConfigurationV1 configuration;
         public Transform avatarRoot;
         
         public AnimatorController generatedController;

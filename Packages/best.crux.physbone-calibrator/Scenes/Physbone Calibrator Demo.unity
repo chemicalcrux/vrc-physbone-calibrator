@@ -217,6 +217,322 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &664532934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3063277780646769099, guid: f81e8172c337a714894d6fdbd0900d8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1351892317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &664532936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664532934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1661641543, guid: 2a2c05204084d904aa4945ccff20d8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foldout_transforms: 1
+  foldout_forces: 1
+  foldout_collision: 1
+  foldout_stretchsquish: 1
+  foldout_limits: 1
+  foldout_grabpose: 1
+  foldout_options: 1
+  foldout_gizmos: 0
+  version: 1
+  integrationType: 0
+  rootTransform: {fileID: 0}
+  ignoreTransforms: []
+  endpointPosition: {x: 0, y: 0, z: 0}
+  multiChildType: 0
+  pull: 0.2
+  pullCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spring: 0.2
+  springCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  stiffness: 0.2
+  stiffnessCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gravity: 0
+  gravityCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gravityFalloff: 0
+  gravityFalloffCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  immobileType: 0
+  immobile: 0
+  immobileCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  allowCollision: 1
+  collisionFilter:
+    allowSelf: 1
+    allowOthers: 1
+  radius: 0
+  radiusCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  colliders: []
+  limitType: 0
+  maxAngleX: 45
+  maxAngleXCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxAngleZ: 45
+  maxAngleZCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  limitRotation: {x: 0, y: 0, z: 0}
+  limitRotationXCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  limitRotationYCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  limitRotationZCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  allowGrabbing: 1
+  grabFilter:
+    allowSelf: 1
+    allowOthers: 1
+  allowPosing: 1
+  poseFilter:
+    allowSelf: 1
+    allowOthers: 1
+  snapToHand: 0
+  grabMovement: 0.5
+  maxStretch: 0
+  maxStretchCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxSquish: 0
+  maxSquishCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  stretchMotion: 0
+  stretchMotionCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  isAnimated: 0
+  resetWhenDisabled: 0
+  parameter: 
+  showGizmos: 1
+  boneOpacity: 0.5
+  limitOpacity: 0.5
+--- !u!1 &789395520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 871648306877576274, guid: f81e8172c337a714894d6fdbd0900d8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1351892317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &789395522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789395520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1661641543, guid: 2a2c05204084d904aa4945ccff20d8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foldout_transforms: 1
+  foldout_forces: 1
+  foldout_collision: 1
+  foldout_stretchsquish: 1
+  foldout_limits: 1
+  foldout_grabpose: 1
+  foldout_options: 1
+  foldout_gizmos: 0
+  version: 1
+  integrationType: 0
+  rootTransform: {fileID: 0}
+  ignoreTransforms: []
+  endpointPosition: {x: 0, y: 0, z: 0}
+  multiChildType: 0
+  pull: 0.2
+  pullCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spring: 0.2
+  springCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  stiffness: 0.2
+  stiffnessCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gravity: 0
+  gravityCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gravityFalloff: 0
+  gravityFalloffCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  immobileType: 0
+  immobile: 0
+  immobileCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  allowCollision: 1
+  collisionFilter:
+    allowSelf: 1
+    allowOthers: 1
+  radius: 0
+  radiusCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  colliders: []
+  limitType: 0
+  maxAngleX: 45
+  maxAngleXCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxAngleZ: 45
+  maxAngleZCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  limitRotation: {x: 0, y: 0, z: 0}
+  limitRotationXCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  limitRotationYCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  limitRotationZCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  allowGrabbing: 1
+  grabFilter:
+    allowSelf: 1
+    allowOthers: 1
+  allowPosing: 1
+  poseFilter:
+    allowSelf: 1
+    allowOthers: 1
+  snapToHand: 0
+  grabMovement: 0.5
+  maxStretch: 0
+  maxStretchCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxSquish: 0
+  maxSquishCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  stretchMotion: 0
+  stretchMotionCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  isAnimated: 0
+  resetWhenDisabled: 0
+  parameter: 
+  showGizmos: 1
+  boneOpacity: 0.5
+  limitOpacity: 0.5
 --- !u!1 &899243882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2762397533810321192, guid: f81e8172c337a714894d6fdbd0900d8d,
@@ -944,7 +1260,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f81e8172c337a714894d6fdbd0900d8d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1464692006}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f81e8172c337a714894d6fdbd0900d8d,
         type: 3}
@@ -958,14 +1278,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1648075006}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f81e8172c337a714894d6fdbd0900d8d,
+    - targetCorrespondingSourceObject: {fileID: 3063277780646769099, guid: f81e8172c337a714894d6fdbd0900d8d,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1648075007}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f81e8172c337a714894d6fdbd0900d8d,
+      addedObject: {fileID: 664532936}
+    - targetCorrespondingSourceObject: {fileID: 871648306877576274, guid: f81e8172c337a714894d6fdbd0900d8d,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1648075010}
+      addedObject: {fileID: 789395522}
     - targetCorrespondingSourceObject: {fileID: -918308900240147899, guid: f81e8172c337a714894d6fdbd0900d8d,
         type: 3}
       insertIndex: -1
@@ -1501,6 +1821,147 @@ MonoBehaviour:
   showGizmos: 1
   boneOpacity: 0.5
   limitOpacity: 0.5
+--- !u!1 &1464692005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1464692006}
+  - component: {fileID: 1464692009}
+  - component: {fileID: 1464692008}
+  - component: {fileID: 1464692007}
+  m_Layer: 0
+  m_Name: Physbone Calibrators
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1464692006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464692005}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1648075012}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1464692007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464692005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f0ee24568af345da89aa84a7eddd462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configuration:
+    rid: 4469067397542707202
+  references:
+    version: 2
+    RefIds:
+    - rid: 4469067397542707202
+      type: {class: PhysboneCalibratorConfigurationV1, ns: Crux.PhysboneCalibrator.Runtime.Configuration,
+        asm: Crux.PhysboneCalibrator.Runtime}
+      data:
+        menuPath: Ears
+        targets:
+        - {fileID: 664532936}
+        - {fileID: 789395522}
+        calibrateForces: 1
+        calibrateLimits: 1
+        calibrateCollision: 1
+        calibrateStretchAndSquish: 1
+        calibrateGrabAndPose: 1
+        calibrateOptions: 1
+        integrationTypeToggle: 1
+        angleRange: {x: 0, y: 90}
+        localOnly: 1
+--- !u!114 &1464692008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464692005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f0ee24568af345da89aa84a7eddd462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configuration:
+    rid: 4469067397542707203
+  references:
+    version: 2
+    RefIds:
+    - rid: 4469067397542707203
+      type: {class: PhysboneCalibratorConfigurationV1, ns: Crux.PhysboneCalibrator.Runtime.Configuration,
+        asm: Crux.PhysboneCalibrator.Runtime}
+      data:
+        menuPath: Tail
+        targets:
+        - {fileID: 1011331094}
+        calibrateForces: 1
+        calibrateLimits: 1
+        calibrateCollision: 1
+        calibrateStretchAndSquish: 1
+        calibrateGrabAndPose: 1
+        calibrateOptions: 1
+        integrationTypeToggle: 1
+        angleRange: {x: 0, y: 90}
+        localOnly: 1
+--- !u!114 &1464692009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464692005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f0ee24568af345da89aa84a7eddd462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configuration:
+    rid: 4469067397542707202
+  references:
+    version: 2
+    RefIds:
+    - rid: 4469067397542707202
+      type: {class: PhysboneCalibratorConfigurationV1, ns: Crux.PhysboneCalibrator.Runtime.Configuration,
+        asm: Crux.PhysboneCalibrator.Runtime}
+      data:
+        menuPath: Hair
+        targets:
+        - {fileID: 1421247169}
+        - {fileID: 1044713354}
+        - {fileID: 1172083531}
+        - {fileID: 899243884}
+        - {fileID: 1721808891}
+        - {fileID: 1768537775}
+        - {fileID: 1711001666}
+        - {fileID: 1369930286}
+        calibrateForces: 1
+        calibrateLimits: 1
+        calibrateCollision: 1
+        calibrateStretchAndSquish: 1
+        calibrateGrabAndPose: 1
+        calibrateOptions: 1
+        integrationTypeToggle: 1
+        angleRange: {x: 0, y: 90}
+        localOnly: 1
 --- !u!1001 &1511500361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1869,61 +2330,12 @@ MonoBehaviour:
       type: {class: DirectTreeOptimizer, ns: VF.Model.Feature, asm: VRCFury}
       data:
         version: 0
---- !u!114 &1648075007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!4 &1648075012 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f81e8172c337a714894d6fdbd0900d8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1351892317}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1351892318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f0ee24568af345da89aa84a7eddd462, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuPath: Tail
-  targets:
-  - {fileID: 1011331094}
-  calibrateForces: 1
-  calibrateLimits: 1
-  calibrateCollision: 1
-  calibrateStretchAndSquish: 1
-  calibrateGrabAndPose: 1
-  calibrateOptions: 1
-  integrationTypeToggle: 1
-  angleRange: {x: 0, y: 90}
-  localOnly: 1
---- !u!114 &1648075010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1351892318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f0ee24568af345da89aa84a7eddd462, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuPath: Hair
-  targets:
-  - {fileID: 1421247169}
-  - {fileID: 1044713354}
-  - {fileID: 1172083531}
-  - {fileID: 899243884}
-  - {fileID: 1721808891}
-  - {fileID: 1768537775}
-  - {fileID: 1711001666}
-  - {fileID: 1369930286}
-  calibrateForces: 1
-  calibrateLimits: 1
-  calibrateCollision: 1
-  calibrateStretchAndSquish: 1
-  calibrateGrabAndPose: 1
-  calibrateOptions: 1
-  integrationTypeToggle: 0
-  angleRange: {x: 0, y: 90}
-  localOnly: 1
 --- !u!1 &1711001664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3084909755802494161, guid: f81e8172c337a714894d6fdbd0900d8d,
