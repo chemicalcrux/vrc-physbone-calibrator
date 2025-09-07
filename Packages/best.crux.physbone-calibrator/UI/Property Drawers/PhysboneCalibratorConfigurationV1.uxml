@@ -1,4 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <uie:PropertyField binding-path="menuPath" label="Menu Path" />
+    <uie:PropertyField binding-path="targets" label="Targets" />
     <ui:Label tabindex="-1" text="Features" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 20px; -unity-font-style: bold;" />
     <ui:GroupBox>
         <uie:PropertyField binding-path="calibrateForces" label="Forces" />
