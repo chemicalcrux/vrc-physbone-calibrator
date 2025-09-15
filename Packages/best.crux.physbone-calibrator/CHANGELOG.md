@@ -16,7 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **BREAKING:** Move all demo assets into package samples.
 - The project now properly displays the MIT license.
+
+### Fixed
+
+- The changelog URL was incorrect
 
 ## [0.4.0] 2025-09-07
 
