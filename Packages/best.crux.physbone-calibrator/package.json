@@ -13,7 +13,7 @@
   "vpmDependencies" : {
     "com.vrchat.avatars" : ">=3.7.6 < 3.9.X",
     "com.vrcfury.vrcfury" : ">=1.1206.0",
-    "best.crux.core" : ">=0.7.1 <0.8.0"
+    "best.crux.core" : ">=0.8.0 <0.9.0"
   },
   "changelogUrl": "https://github.com/chemicalcrux/vrc-physbone-calibrator/blob/main/Packages/best.crux.physbone-calibrator/CHANGELOG.md",
   "documentationUrl": "https://chemicalcrux.github.io/vrc-docs/docs/code/best.crux.physbone-calibrator/",

@@ -10,7 +10,7 @@
       "version": "3.9.3"
     },
     "best.crux.core": {
-      "version": "0.7.1"
+      "version": "0.8.0"
     }
   },
   "locked": {
@@ -35,7 +35,7 @@
       }
     },
     "best.crux.core": {
-      "version": "0.7.1",
+      "version": "0.8.0",
       "dependencies": {}
     }
   }
