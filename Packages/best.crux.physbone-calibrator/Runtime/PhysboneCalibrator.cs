@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using Crux.Core.Runtime.Attributes;
 using Crux.PhysboneCalibrator.Runtime.Configuration;
 using UnityEngine;
-using VRC.SDK3.Dynamics.PhysBone.Components;
 using VRC.SDKBase;
 
 namespace Crux.PhysboneCalibrator.Runtime
 {
+    [HideIcon]
     public class PhysboneCalibrator : MonoBehaviour, IEditorOnly
     {
         [SerializeField, SerializeReference] internal PhysboneCalibratorConfiguration configuration = new PhysboneCalibratorConfigurationV1();
