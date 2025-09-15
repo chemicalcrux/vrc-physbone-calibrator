@@ -16,5 +16,12 @@
     "best.crux.core" : ">=0.7.1 <0.8.0"
   },
   "changelogUrl": "https://github.com/chemicalcrux/vrc-physbone-calibrator/blob/main/CHANGELOG.md",
-  "documentationUrl": "https://chemicalcrux.github.io/vrc-docs/docs/code/best.crux.physbone-calibrator/"
+  "documentationUrl": "https://chemicalcrux.github.io/vrc-docs/docs/code/best.crux.physbone-calibrator/",
+  "samples": [
+    {
+      "displayName": "Demo",
+      "description": "An example of how to use the calibrator. It includes calibrators for hair, ear, and tail physbones.",
+      "path": "Samples~/Demo"
+    }
+  ]
 }
