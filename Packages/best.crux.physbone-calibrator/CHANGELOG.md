@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Custom icon for the PhysboneCalibrator class
+- Documentation and changelog links in the package manifest
+
+### Changed
+
+- The project now properly displays the MIT license.
 
 ## [0.4.0] 2025-09-07
 
